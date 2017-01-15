@@ -10,38 +10,38 @@ def service_ip(name):
     """
     Retrieve service vip.
     """
-    res = resolver.Resolver()
+    res = resolver.Resolver(configure=False)
     res.nameservers = ['127.0.0.11']
     res.timeout = 1
     res.lifetime = 1
 
     addresses,tasks = [], []
 
-    try:
-        answers = res.query(name)
-        for rdata in answers:
-            addresses.append(rdata.address)
+    # try:
+    answers = res.query(name + '.')
+    for rdata in answers:
+        addresses.append(rdata.address)
 
-    except:
-        return {
-            'service': name,
-            'ip': "",
-            'tasks': '',
-            'error': 'Probleme lors de la resolution de ' + name
-        }
+    # except:
+    #     return {
+    #         'service': name,
+    #         'ip': "",
+    #         'tasks': '',
+    #         'error': 'Probleme lors de la resolution de ' + name
+    #     }
 
-    try:
-        answers = res.query('tasks.' + name)
-        for rdata in answers:
-            tasks.append(rdata.address)
+    # try:
+    answers = res.query('tasks.' + name + '.')
+    for rdata in answers:
+        tasks.append(rdata.address)
 
-    except:
-        return {
-            'service': name,
-            'ip': addresses,
-            'tasks': '',
-            'error': 'Probleme lors de la resolution de tasks.' + name
-        }
+    # except:
+    #     return {
+    #         'service': name,
+    #         'ip': addresses,
+    #         'tasks': '',
+    #         'error': 'Probleme lors de la resolution de tasks.' + name
+    #     }
 
     return {
         'service': name,
