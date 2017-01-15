@@ -4,6 +4,7 @@ FROM python:2.7-alpine
 
 ADD ./app.py /app.py
 ADD ./run.sh /run.sh
+ADD etc/resolv.conf /etc/resolv.conf
 ADD ./requirements.txt /requirements.txt
 
 RUN pip install -r /requirements.txt && \
