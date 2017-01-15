@@ -11,7 +11,7 @@ def service_ip(name):
     Retrieve service vip.
     """
     res = resolver.Resolver()
-    # res.nameservers = ['127.0.0.11']
+    res.nameservers = ['127.0.0.11']
     res.timeout = 1
     res.lifetime = 1
 
