@@ -1,7 +1,7 @@
 FROM python:2.7-alpine
 # FROM python:2.7-slim
 
-RUN rm -f /etc/resolv.conf
+# RUN rm -f /etc/resolv.conf
 
 ADD ./app.py /app.py
 ADD ./run.sh /run.sh
