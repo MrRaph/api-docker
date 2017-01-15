@@ -1,5 +1,5 @@
-# FROM python:2.7-alpine
-FROM python:2.7-slim
+FROM python:2.7-alpine
+# FROM python:2.7-slim
 
 
 ADD ./app.py /app.py
