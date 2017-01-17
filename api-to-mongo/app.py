@@ -1,5 +1,5 @@
-from flask import request, url_for
-from flask.ext.pymongo import PyMongo
+from flask import Flask, request, url_for
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 # connect to another MongoDB server altogether
