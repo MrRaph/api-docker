@@ -1,2 +1,4 @@
-Flask
+dnspython
+Flask-API
+markdown
 Flask-PyMongo
