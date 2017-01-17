@@ -20,6 +20,7 @@ def user_profile(username):
         dataDict = json.loads(data)
         print(dataDict)
         return dataDict
+        
     # return render_template('user.html',
     #     user=user)
     # return {
