@@ -62,18 +62,18 @@ Rentrons maintenant dans le vif du sujet, voici comment utiliser l'outil api-doc
 
 ### Récupérer la vIP d'un service
 
-Pour récupérer la vIP d'un service, l'outil api-docker-service-ips expose une URL de la forme : [http://127.0.0.1:5000/docker/service/<service_name>/ip](http://127.0.0.1:5000/docker/service/<service_name>/ip)
+Pour récupérer la vIP d'un service, l'outil api-docker-service-ips expose une URL de la forme : [http://127.0.0.1/docker/service/<service_name>/ip](http://127.0.0.1:5000/docker/service/<service_name>/ip)
 
 Voici un exemple d'utilisation pour récupérer la vIP du service `api-docker-service-ips` :
 
-    curl -X GET http://api-docker-service-ips:5000/docker/service/api-docker-service-ips/ip
+    curl -X GET http://api-docker-service-ips/docker/service/api-docker-service-ips/ip
     {"ip": ["10.0.0.9"], "tasks": ["10.0.0.19"], "service": "api-docker-service-ips", "error": ""}
 
 ### Récupérer les IP des containers d'un service
 
-Pour récupérer les IP des containers d'un service, l'outil api-docker-service-ips expose une URL de la forme : [http://127.0.0.1:5000:5000/docker/service/<service_name>/tasks/ip](http://127.0.0.1:5000/docker/service/<service_name>/tasks/ip)
+Pour récupérer les IP des containers d'un service, l'outil api-docker-service-ips expose une URL de la forme : [http://127.0.0.1/docker/service/<service_name>/tasks/ip](http://127.0.0.1:5000/docker/service/<service_name>/tasks/ip)
 
 Voici un exemple d'utilisation pour récupérer les IP des containers du service `api-docker-service-ips` :
 
-    curl -X GET http://api-docker-service-ips:5000/docker/service/api-docker-service-ips/tasks/ip
+    curl -X GET http://api-docker-service-ips/docker/service/api-docker-service-ips/tasks/ip
     {"tasks": ["10.0.0.19"], "service": "api-docker-service-ips", "error": ""}

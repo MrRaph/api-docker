@@ -6,12 +6,12 @@ from pprint import pprint
 
 app = FlaskAPI(__name__)
 app.config['MONGO_DBNAME'] = 'api'
-# app.config['MONGO_URI'] = 'mongodb://mongo1:27017,mongo2:27017,mongo3:27017/api?replicaSet=techan'
-app.config['MONGO_URI'] = 'mongodb://10.150.71.164:27017/api'
+app.config['MONGO_URI'] = 'mongodb://mongo1:27017,mongo2:27017,mongo3:27017/api?replicaSet=techan'
+# app.config['MONGO_URI'] = 'mongodb://10.150.71.164:27017/api'
 mongo = PyMongo(app)
 
-@app.route('/service', defaults={'service_name': None}, methods=['POST'])
-@app.route('/service/<service_name>', methods=['GET'])
+@app.route('/docker/service', defaults={'service_name': None}, methods=['POST'])
+@app.route('/docker/service/<service_name>', methods=['GET'])
 def service(service_name):
     if request.method == 'GET':
         service = mongo.db.services.find_one_or_404({'service': service_name})
