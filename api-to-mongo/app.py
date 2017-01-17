@@ -1,5 +1,6 @@
 from flask import Flask, request, url_for
 from flask_pymongo import PyMongo
+import json
 
 app = Flask(__name__)
 # connect to another MongoDB server altogether
@@ -11,6 +12,11 @@ def user_profile(username):
     # user = mongo.db.users.find_one_or_404({'_id': username})
     if request.method == 'GET':
         user = mongo.db.api.find_one_or_404({'_id': username})
+    elif request.method == 'POST':
+        # data in string format and you have to parse into dictionary
+        data = request.data
+        dataDict = json.loads(data)
+        print(dataDict)
     # return render_template('user.html',
     #     user=user)
     # return {
