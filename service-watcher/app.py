@@ -18,7 +18,8 @@ client = docker.DockerClient(base_url='unix://var/run/docker.sock')
 # @cron.interval_schedule(minutes=1)
 def getSwarmServices():
     for service in client.services.list():
-        url = 'http://10.150.71.164/docker/service'
+        url = 'http://api-docker-api-to-mongo/docker/service'
+        # url = 'http://10.150.71.164/docker/service'
         response = requests.post(url, json=service.attrs)
         # tasks.append(rdata.address)
 
@@ -35,7 +36,7 @@ if __name__ == '__main__':
     log.addHandler(h)
 
     mongocClient = MongoClient('mongodb://mongo1:27017,mongo2:27017,mongo3:27017/api?replicaSet=techan')
-    mongocClient = MongoClient('mongodb://10.150.71.164:27017/api')
+    # mongocClient = MongoClient('mongodb://10.150.71.164:27017/api')
 
     jobstores = {
       'default': MongoDBJobStore(database='api', client=mongocClient)
