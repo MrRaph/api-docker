@@ -28,7 +28,7 @@ def service(service_name):
         service_id = services.update_one(
             # {"Spec.Name": data['Spec']['Name']},
             {"name": data['Spec']['Name']},
-            {"$set": {"name": data['Spec']['Name'], "docker_info": data}},
+            {"$set": {"name": data['Spec']['Name'], "docker_info": '"' + str(data) + '""'}},
             upsert=True
         )
 
