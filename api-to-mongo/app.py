@@ -8,6 +8,7 @@ app = FlaskAPI(__name__)
 app.config['MONGO_DBNAME'] = 'api'
 app.config['MONGO_URI'] = 'mongodb://mongo1:27017,mongo2:27017,mongo3:27017/api?replicaSet=techan'
 # app.config['MONGO_URI'] = 'mongodb://10.150.71.164:27017/api'
+# app.config['MONGO_URI'] = 'mongodb://192.168.1.47:27017/api'
 mongo = PyMongo(app)
 
 @app.route('/docker/service', defaults={'service_name': None}, methods=['POST'])
@@ -24,7 +25,12 @@ def service(service_name):
         data = request.json
         # pprint( data['Spec']['Name'])
         services = mongo.db.services
-        service_id = services.update_one({"Spec.Name": data['Spec']['Name']}, {"$set": data}, upsert=True)
+        service_id = services.update_one(
+            # {"Spec.Name": data['Spec']['Name']},
+            {"name": data['Spec']['Name']},
+            {"$set": {"name": data['Spec']['Name'], "docker_info": data}},
+            upsert=True
+        )
 
         return {
             'service': data,
