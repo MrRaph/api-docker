@@ -6,7 +6,7 @@ from pprint import pprint
 
 app = FlaskAPI(__name__)
 app.config['MONGO_DBNAME'] = 'api'
-app.config['MONGO_URI'] = 'mongodb://mongo1:27017,mongo2:27017,mongo3:27017/api?replicaSet=techan'
+app.config['MONGO_URI'] = 'mongodb://mongo127017,mongo2:27017,mongo3:27017/api?replicaSet=techan'
 # app.config['MONGO_URI'] = 'mongodb://10.150.71.164:27017/api'
 # app.config['MONGO_URI'] = 'mongodb://192.168.1.47:27017/api'
 mongo = PyMongo(app)
